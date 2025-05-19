@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import API from '../api/api';
 import BlogCard from '../components/BlogCard';
+import { useNavigate } from 'react-router-dom';
 
-
-const DraftBlog = () => {
+const HomePage = () => {
   const [blogs, setBlogs] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchBlogs();
@@ -13,27 +14,23 @@ const DraftBlog = () => {
   const fetchBlogs = async () => {
     try {
       const res = await API.get('/blogs');
-      console.log("Fetched blogs: ", res.data);
       setBlogs(res.data);
     } catch (error) {
-      console.error('Failed to load blogs', error);
+      console.error('Failed to load blogs');
     }
   };
 
-  const draftBlogs = blogs.filter((b) => b.status === 'draft');
-
   return (
+    <div>
     <div className="container">
-      <h3>Drafts</h3>
-      {draftBlogs.length > 0 ? (
-      draftBlogs.map((blog) => (
+      <h2>My Blogs</h2>
+      <button onClick={() => navigate('/editor')}>New Blog</button>
+      </div>
+      {blogs.map((blog) => (
         <BlogCard key={blog._id} blog={blog} />
-      ))
-    ) : (
-      <p>There is no draft blogs</p>
-    )}
+      ))}
     </div>
   );
 };
 
-export default DraftBlog;
+export default HomePage;

@@ -1,28 +1,15 @@
 import {React, useEffect, useState} from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { decodeToken } from "../utils/tokenUtils";
+import { useAuth } from "../context/AuthContext";
 
-const Navbar = ({ user, setUser }) => {
-  const [userData, setUserData] = useState(null);
+const Navbar = () => {
+  const {user, logout} = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-      const token = localStorage.getItem("token");
-      if(token){
-        const decoded = decodeToken(token);
-        setUserData(decoded);
-        setUser(decoded);
-      }else{
-        setUserData(null);
-        setUser(null);
-      }
-    },  [location, setUser]);
-
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    setUser(null);
-    navigate("/login");
+    logout();
+    navigate("/");
   };
 
   
@@ -30,8 +17,8 @@ const Navbar = ({ user, setUser }) => {
   return (
     <nav style={styles.nav}>
       <div style={styles.left}>
-        <Link to="/home" style={styles.logo}>Blog Editor</Link>
-        <Link to="/home" style={styles.link}>Home</Link>
+        <Link to= {user ? "/home" : "/"} style={styles.logo}>Blog Editor</Link>
+        <Link to= {user ? "/home" : "/"}  style={styles.link}>Home</Link>
         {user && (
           <>
             <Link to="/published-blogs" style={styles.link}>Published</Link>
@@ -42,7 +29,7 @@ const Navbar = ({ user, setUser }) => {
       <div style={styles.right}>
         {user ? (
             <>
-                <span style={styles.username}>{userData.username}</span>
+                <span style={styles.username}>{user.username}</span>
                 <button onClick={handleLogout} style={styles.button}>Logout</button>
             </>
         ) : (

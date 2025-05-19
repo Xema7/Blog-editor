@@ -8,13 +8,13 @@ import Navbar from './components/Navbar';
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import BlogEditorPage from './pages/BlogEditorPage';
-import BlogListPage from './pages/BlogListPage';
+import HomePage from './pages/HomePage';
 import PublishedBlog from './pages/PublishedBlog';
 import DraftBlog from './pages/DraftBlog';
 
 const PrivateRoute = ({ children }) => {
   const { user } = useAuth();
-  return user ? children : <Navigate to="/login" />;
+  return user ? children : <Navigate to="/" />;
 };
 
 function App() {
@@ -27,10 +27,22 @@ function App() {
       <Router>
             <Navbar user={user} setUser={setUser} />
         <Routes>
-          <Route path="/login" element={<LoginPage setUser={setUser} />} />
+          <Route path="/" element={<LoginPage setUser={setUser} />} />
           <Route path="/register" element={<SignupPage />} />
-          <Route path="/published-blogs" element={<PublishedBlog />} />
-          <Route path="/drafts-blogs" element={<DraftBlog />} />
+          <Route 
+            path="/published-blogs" 
+            element={
+              <PrivateRoute>
+                <PublishedBlog /> 
+              </PrivateRoute>
+            } />
+          <Route 
+            path="/drafts-blogs" 
+            element={
+              <PrivateRoute>
+                <DraftBlog />
+              </PrivateRoute>
+            } />
           <Route
             path="/editor/:id?"
             element={
@@ -43,7 +55,7 @@ function App() {
             path="/home"
             element={
               <PrivateRoute>
-                <BlogListPage />
+                <HomePage />
               </PrivateRoute>
             }
           />

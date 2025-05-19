@@ -19,13 +19,20 @@ const PublishedBlog = () => {
       console.error('Failed to load blogs', error);
     }
   };
+
+    const publishedBlogs = blogs.filter((b) => b.status === 'published');
+
   return (
-    // <div>
     <div className="container">
       <h3>Published</h3>
-      {blogs.filter((b) => b.status === 'published').map((blog) => (
+      {publishedBlogs.length > 0 ? (
+        publishedBlogs.map((blog) => (
         <BlogCard key={blog._id} blog={blog} />
-      ))}
+      ))
+    ) : (
+      <p>There is no published blogs.</p>
+    )
+    }
     </div>
   );
 };
