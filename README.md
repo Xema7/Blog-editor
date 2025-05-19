@@ -1,1 +1,16 @@
 # Blog-editor
+This project was developed in React(frontend) + node.js(backend) using Rest Api and MongoDB for storing data. In this blogs can be published and saved as draft. Auto draft save works within 5 Second of inactivity and every 30 seconds.
+
+Dependencies installed for frontend:
+axios
+react-router-dom
+react-tostify
+
+Dependencies installed for backend:
+bcryptjs
+cors
+dotenv
+express
+jsonwebtoken
+mongoose
+nodemon
