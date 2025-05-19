@@ -1,0 +1,33 @@
+.container-form{
+    text-align: center;
+    background-color: #fefefe;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    margin: 1rem auto 0 auto;
+    max-width: 800px;
+}
+
+.login-form{
+    align-items: center;
+    display: block;
+
+}
+
+input{
+    display: block;
+    max-width: 300px;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    height: 1.5rem;
+}
+
+.login{
+  background-color: #cacaca;
+    color: #000000;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+

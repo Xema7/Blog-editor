@@ -23,8 +23,8 @@ const PublishedBlog = () => {
     const publishedBlogs = blogs.filter((b) => b.status === 'published');
 
   return (
-    <div className="container">
-      <h3>Published</h3>
+    <div className="container-blogs">
+      <h3 style={{textAlign:"center"}}>Published Blogs</h3>
       {publishedBlogs.length > 0 ? (
         publishedBlogs.map((blog) => (
         <BlogCard key={blog._id} blog={blog} />

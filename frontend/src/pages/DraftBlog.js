@@ -23,8 +23,8 @@ const DraftBlog = () => {
   const draftBlogs = blogs.filter((b) => b.status === 'draft');
 
   return (
-    <div className="container">
-      <h3>Drafts</h3>
+    <div className="container-blogs">
+      <h3 style={{textAlign:"center"}}>Draft Blogs</h3>
       {draftBlogs.length > 0 ? (
       draftBlogs.map((blog) => (
         <BlogCard key={blog._id} blog={blog} />

@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-do
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import './App.css';
 import Navbar from './components/Navbar';
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
@@ -28,7 +27,7 @@ function App() {
             <Navbar user={user} setUser={setUser} />
         <Routes>
           <Route path="/" element={<LoginPage setUser={setUser} />} />
-          <Route path="/register" element={<SignupPage />} />
+          <Route path="/signup" element={<SignupPage />} />
           <Route 
             path="/published-blogs" 
             element={

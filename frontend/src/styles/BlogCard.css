@@ -1,0 +1,11 @@
+.blog-card {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin:0 10rem 1rem 10rem;
+  cursor: pointer;
+}
+
+.blog-card:hover {
+  background-color: #f9f9f9;
+}

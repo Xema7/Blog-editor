@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import API from '../api/api';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import '../styles/LoginPage.css';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -23,14 +24,14 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-form">
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="login-form">
         <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit">Login</button>
-        <Link to='/register'>Signup</Link>
+        <button type="submit"className='login'>Login</button>
       </form>
+      <p>New user? <Link to='/signup'>signup</Link> here</p>
     </div>
   );
 };

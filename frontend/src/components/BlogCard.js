@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaEdit } from 'react-icons/fa';
+import '../styles/BlogCard.css';
 
 const BlogCard = ({ blog }) => {
   const navigate = useNavigate();
@@ -10,7 +10,6 @@ const BlogCard = ({ blog }) => {
       <p>{blog.content.substring(0, 100)}...</p>
       <div>
         <span>Status: {blog.status}</span>
-        <FaEdit style={{ marginLeft: '10px' }} />
       </div>
     </div>
   );
