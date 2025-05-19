@@ -3,17 +3,17 @@ const Blog = require('../models/Blog');
 exports.saveDraft = async (req, res) => {
     try {
         const { id, title, content, tags } = req.body;
-        const userId = req.user.id;
+        const userId = req.userId;
         let blog;
         if (id) {
             blog = await Blog.findOneAndUpdate(
-                { _id: id, userId: req.userId },
+                { _id: id, userId },
                 { title, content, tags, status: 'draft' },
                 { new: true }
             );
         } else {
             blog = await Blog.create({
-                userId: req.userId,
+                userId,
                 title,
                 content,
                 tags,
